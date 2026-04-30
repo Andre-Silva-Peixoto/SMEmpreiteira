@@ -62,7 +62,7 @@ Se o primeiro link falhar por causa do caminho do projeto no Windows (espaços n
 - **Catálogo:** edite `src/data/projects.ts` e coloque imagens em `public/` (ou use URLs absolutas).
 - **Contato:** altere o bloco Contato em `index.html` (ex.: `mailto:` real).
 - **Cores:** variáveis em `:root` no início de `src/style.css`.
-- **Convenções do time:** veja `CLAUDE.md`.
+- **Convenções do time:** veja `AGENTS.md`.
 
 ## Documentação de produto (spec-driven)
 
