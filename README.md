@@ -32,19 +32,40 @@ npm run preview
 
 A pasta `dist/` contém os arquivos estáticos prontos para publicação.
 
-## Deploy (Vercel)
+## Deploy (alternativas ao Vercel)
+
+O plano gratuito do Vercel pode **limitar o número de pessoas que acessam o link de “Preview”** (ou impor outras restrições de equipe). Para o site ir à internet **sem depender desse limite**, use um destes serviços (todos servem a pasta `dist/` após `npm run build`).
+
+### Netlify (recomendado: simples, site em `*.netlify.app`)
+
+1. Crie conta em [Netlify](https://www.netlify.com/) e conecte o repositório Git.
+2. Build: `npm run build`, diretório de publicação: `dist` (o repositório já inclui `netlify.toml` com isso).
+3. Cada push na branch principal gera deploy automático; o endereço público não fica preso a “um visualizador”.
+
+### Cloudflare Pages
+
+1. No [Cloudflare Dashboard](https://dash.cloudflare.com/) → **Workers & Pages** → **Create** → **Pages** → conecte o Git.
+2. Framework preset: **None** (ou Vite se aparecer). Build command: `npm run build`, output: `dist`.
+
+### GitHub Pages
+
+1. No repositório: **Settings** → **Pages** → **Build and deployment** → origem: **GitHub Actions**.
+2. O workflow `.github/workflows/deploy-github-pages.yml` faz build com `VITE_BASE_PATH` igual ao nome do repositório (URL típica: `https://<usuario>.github.io/<nome-do-repo>/`).
+3. Ajuste a branch no YAML se o deploy não for em `main`.
+
+O `vite.config.ts` lê a variável `VITE_BASE_PATH` só para GitHub Pages em subpath; em Netlify/Cloudflare deixe sem definir (base padrão `/`).
+
+### Vercel (opcional)
 
 O repositório inclui `vercel.json` com `npm run build` e saída em `dist/`.
-
-Na raiz do projeto (com [Vercel CLI](https://vercel.com/docs/cli) autenticada):
 
 ```bash
 npx vercel deploy --prod --yes
 ```
 
-Se o primeiro link falhar por causa do caminho do projeto no Windows (espaços no path), use um nome explícito na primeira vez: `npx vercel deploy --prod --yes --name sm-empreiteira`.
+Se o primeiro link falhar por causa do caminho do projeto no Windows (espaços no path), use: `npx vercel deploy --prod --yes --name sm-empreiteira`.
 
-**Produção:** [https://sm-empreiteira.vercel.app](https://sm-empreiteira.vercel.app)
+**Exemplo (se ainda estiver ativo):** [https://sm-empreiteira.vercel.app](https://sm-empreiteira.vercel.app)
 
 ## Estrutura principal
 
