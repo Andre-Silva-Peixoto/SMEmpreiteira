@@ -34,6 +34,8 @@ A pasta `dist/` contém os arquivos estáticos prontos para publicação.
 
 ## Deploy
 
+**Agentes (Cursor / automação):** o runbook completo (ordem dos comandos, `VITE_BASE_PATH`, Vercel vs GitHub Pages, PowerShell) está em **`AGENTS.md`** → seção **Deploy — runbook para o próximo agente**.
+
 O `vite.config.ts` usa `VITE_BASE_PATH` só no **GitHub Pages** (site em subpath `usuario.github.io/repo/`). Em Vercel, Netlify e Cloudflare o domínio fica na **raiz**; não defina `VITE_BASE_PATH` (o build usa base `/`).
 
 ### Vercel (produção)
