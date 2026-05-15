@@ -83,4 +83,4 @@ Site institucional “cartão de visitas” para **SM Empreiteira de Obras**: na
 
 - Sem bibliotecas de UI ou frameworks além do necessário; preferir HTML semântico + CSS.
 - **Marca:** azul `#004182`, laranja `#F5A623`, tipografia **Montserrat** (Google Fonts). Logo vetorial em `public/logo-sm-empreiteira.svg` (substituir por PNG oficial com fundo transparente em `public/logo-sm-empreiteira.png` e atualizar `index.html` se necessário).
-- Imagens reais do catálogo vêm do cliente; placeholders em `public/projects/` até troca.
+- Fotos do catálogo em `public/projects/` (`1.png`–`6.png`), listadas em `src/data/projects.ts`.

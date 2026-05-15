@@ -82,11 +82,11 @@ npx vercel deploy --prod --yes
 | `src/style.css` | Tokens de marca e layout |
 | `src/data/projects.ts` | Dados dos cards do catálogo |
 | `public/logo-sm-empreiteira.svg` | Logo vetorial do header |
-| `public/projects/` | Imagens placeholder do catálogo |
+| `public/projects/` | Fotos do catálogo (`1.png` … `6.png`; referenciadas em `src/data/projects.ts`) |
 
 ## Personalização rápida
 
-- **Catálogo:** edite `src/data/projects.ts` e coloque imagens em `public/` (ou use URLs absolutas).
+- **Catálogo:** edite `src/data/projects.ts` e coloque ou troque imagens em `public/projects/` (ex.: `1.png` … `6.png`).
 - **Contato:** altere o bloco Contato em `index.html` (ex.: `mailto:` real).
 - **Cores:** variáveis em `:root` no início de `src/style.css`.
 - **Convenções do time:** veja `AGENTS.md`.
