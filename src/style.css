@@ -470,6 +470,300 @@ a:hover {
   color: var(--color-text-muted);
 }
 
+/* Briefing: formulário + painel visual leve */
+.section-briefing {
+  background: var(--color-surface);
+}
+
+.briefing-layout {
+  display: grid;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (min-width: 960px) {
+  .briefing-layout {
+    grid-template-columns: minmax(280px, 1fr) minmax(340px, 1.05fr);
+    gap: 2.5rem;
+  }
+}
+
+.briefing-preview-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  position: sticky;
+  top: calc(var(--header-h) + 1rem);
+}
+
+@media (max-width: 959px) {
+  .briefing-preview-column {
+    position: static;
+  }
+}
+
+.briefing-visual-host {
+  width: 100%;
+  min-height: 0;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  background: linear-gradient(165deg, #e8eef5 0%, #f4f7fb 48%, #dfe8f2 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    0 10px 40px rgba(0, 65, 130, 0.1);
+  overflow: hidden;
+}
+
+.briefing-visual-panel-inner {
+  height: 100%;
+}
+
+.briefing-visual-root {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.15rem 1.2rem 1.25rem;
+  max-height: min(56vh, 480px);
+  overflow: auto;
+}
+
+.briefing-visual-head {
+  flex-shrink: 0;
+}
+
+.briefing-visual-title {
+  margin: 0 0 0.35rem;
+  font-size: 1.05rem;
+  color: var(--color-brand-navy);
+}
+
+.briefing-visual-lead {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--color-text-muted);
+}
+
+.briefing-visual-chart {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.briefing-visual-bar-caption {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  fill: var(--color-brand-navy);
+}
+
+.briefing-visual-bar-track {
+  fill: rgba(0, 65, 130, 0.1);
+}
+
+.briefing-visual-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.briefing-visual-chip {
+  margin: 0;
+  padding: 0.32rem 0.65rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-brand-navy);
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(0, 65, 130, 0.18);
+  border-radius: 999px;
+}
+
+.briefing-visual-tips {
+  padding: 0.85rem 1rem;
+  border-radius: calc(var(--radius) - 4px);
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(0, 65, 130, 0.12);
+}
+
+.briefing-visual-tips-title {
+  margin: 0 0 0.5rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--color-brand-navy);
+}
+
+.briefing-visual-tips-list {
+  margin: 0;
+  padding-left: 1.15rem;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.briefing-visual-tips-list li + li {
+  margin-top: 0.4rem;
+}
+
+.briefing-summary-panel {
+  padding: 1.25rem 1.35rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-elevated);
+  box-shadow: var(--shadow-soft);
+}
+
+.briefing-summary-title {
+  margin: 0 0 0.65rem;
+  font-size: 1rem;
+  color: var(--color-brand-navy);
+}
+
+.briefing-live-text {
+  margin: 0;
+  padding: 0.85rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border-radius: calc(var(--radius) - 4px);
+  border: 1px solid var(--color-border);
+  max-height: 280px;
+  overflow: auto;
+}
+
+.briefing-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.briefing-actions .btn {
+  flex: 1 1 auto;
+  min-width: min(100%, 10rem);
+  justify-content: center;
+  text-align: center;
+}
+
+.briefing-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.briefing-fieldset {
+  margin: 0;
+  padding: 1.15rem 1.2rem 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.briefing-fieldset legend {
+  padding: 0 0.35rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-brand-navy);
+}
+
+.briefing-fieldset-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 520px) {
+  .briefing-fieldset-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+}
+
+.briefing-subfield-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.briefing-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.briefing-options-columns {
+  display: grid;
+  gap: 0.45rem;
+}
+
+@media (min-width: 400px) {
+  .briefing-options-columns {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.briefing-options label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--color-text);
+  cursor: pointer;
+  line-height: 1.35;
+}
+
+.briefing-options input {
+  margin-top: 0.22rem;
+  flex-shrink: 0;
+  accent-color: var(--color-brand-navy);
+}
+
+.briefing-fields-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.briefing-text-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.briefing-text-label input,
+.briefing-text-label textarea {
+  font: inherit;
+  padding: 0.55rem 0.65rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.briefing-text-label textarea {
+  resize: vertical;
+  min-height: 4.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .briefing-visual-host {
+    scroll-margin-top: var(--header-h);
+  }
+}
+
 /* Contact */
 .section-contact {
   background: var(--color-surface-elevated);

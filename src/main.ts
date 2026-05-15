@@ -1,4 +1,5 @@
 import { projects, type Project } from "./data/projects";
+import { initBriefingConfigurator } from "./briefing";
 import "./style.css";
 
 function renderProjectCards(container: HTMLElement, items: Project[]): void {
@@ -85,3 +86,4 @@ if (grid) renderProjectCards(grid, projects);
 
 initNavToggle();
 setYear();
+initBriefingConfigurator();

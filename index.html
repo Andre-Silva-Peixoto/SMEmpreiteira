@@ -45,6 +45,7 @@
             <li><a href="#top">Início</a></li>
             <li><a href="#sobre">Quem somos</a></li>
             <li><a href="#catalogo">Catálogo</a></li>
+            <li><a href="#briefing">Briefing</a></li>
             <li><a href="#contato">Contato</a></li>
           </ul>
         </nav>
@@ -64,6 +65,7 @@
           </p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#catalogo">Ver obras</a>
+            <a class="btn btn-ghost" href="#briefing">Monte seu briefing</a>
             <a class="btn btn-ghost" href="#contato">Fale conosco</a>
           </div>
         </div>
@@ -117,6 +119,235 @@
             </p>
           </div>
           <div class="catalog-grid" id="catalog-grid"></div>
+        </div>
+      </section>
+
+      <section
+        class="section section-briefing"
+        id="briefing"
+        tabindex="-1"
+        aria-labelledby="briefing-title"
+      >
+        <div class="container">
+          <div class="section-header">
+            <h2 id="briefing-title">Briefing interativo</h2>
+            <p class="section-intro">
+              Monte uma <strong>pré-análise</strong> do que você busca em empreitada ou gestão de
+              obra. O formulário gera um resumo para primeiro contato e, ao lado, uma
+              <strong>leitura rápida</strong> com indicadores ilustrativos e sugestões conforme o
+              que você marcar — sem valor de projeto ou orçamento.
+            </p>
+          </div>
+          <div class="briefing-layout">
+            <div class="briefing-preview-column">
+              <div
+                id="briefing-visual-panel"
+                class="briefing-visual-host"
+                aria-label="Painel de leitura rápida e sugestões conforme o formulário de briefing"
+              ></div>
+              <div class="briefing-summary-panel">
+                <h3 class="briefing-summary-title">Resumo do briefing</h3>
+                <div
+                  id="briefing-live-summary"
+                  class="briefing-live-text"
+                  role="status"
+                  aria-live="polite"
+                  aria-atomic="true"
+                ></div>
+                <div class="briefing-actions">
+                  <button type="button" class="btn btn-primary" id="briefing-copy-summary">
+                    Copiar resumo
+                  </button>
+                  <a
+                    class="btn btn-ghost"
+                    id="briefing-mailto"
+                    href="mailto:contato@smempreiteira.com.br"
+                    >Enviar por e-mail</a
+                  >
+                </div>
+              </div>
+            </div>
+            <form id="briefing-form" class="briefing-form" novalidate>
+              <fieldset class="briefing-fieldset">
+                <legend>Tipo de demanda</legend>
+                <div class="briefing-options">
+                  <label
+                    ><input type="radio" name="demandType" value="new_build" checked /> Nova
+                    construção</label
+                  >
+                  <label
+                    ><input type="radio" name="demandType" value="expansion_reform" /> Ampliação /
+                    reforma</label
+                  >
+                  <label
+                    ><input type="radio" name="demandType" value="infrastructure" /> Infraestrutura
+                    / urbanização</label
+                  >
+                  <label
+                    ><input type="radio" name="demandType" value="maintenance" /> Manutenção e
+                    recuperação</label
+                  >
+                </div>
+              </fieldset>
+              <fieldset class="briefing-fieldset">
+                <legend>Segmento / uso principal</legend>
+                <div class="briefing-options">
+                  <label
+                    ><input type="radio" name="segment" value="multifamily" checked />
+                    Multifamiliar</label
+                  >
+                  <label
+                    ><input type="radio" name="segment" value="commercial" /> Comercial /
+                    serviços</label
+                  >
+                  <label
+                    ><input type="radio" name="segment" value="industrial" /> Industrial /
+                    logística</label
+                  >
+                  <label
+                    ><input type="radio" name="segment" value="institutional" /> Institucional /
+                    saúde / educação</label
+                  >
+                  <label
+                    ><input type="radio" name="segment" value="civil_works" /> Obras civis
+                    (viário, pontes)</label
+                  >
+                </div>
+              </fieldset>
+              <fieldset class="briefing-fieldset briefing-fieldset-grid">
+                <legend>Porte e área (ordem de grandeza)</legend>
+                <div class="briefing-subfield">
+                  <span class="briefing-subfield-label" id="briefing-scale-label">Porte</span>
+                  <div class="briefing-options briefing-options-columns" role="group" aria-labelledby="briefing-scale-label">
+                    <label
+                      ><input type="radio" name="scale" value="small" /> Pequeno</label
+                    >
+                    <label><input type="radio" name="scale" value="medium" checked /> Médio</label>
+                    <label><input type="radio" name="scale" value="large" /> Grande</label>
+                    <label
+                      ><input type="radio" name="scale" value="xlarge" /> Muito grande
+                      (infraestrutura)</label
+                    >
+                  </div>
+                </div>
+                <div class="briefing-subfield">
+                  <span class="briefing-subfield-label" id="briefing-area-label">Área útil</span>
+                  <div class="briefing-options briefing-options-columns" role="group" aria-labelledby="briefing-area-label">
+                    <label
+                      ><input type="radio" name="areaBand" value="up_to_500" /> Até ~500 m²</label
+                    >
+                    <label
+                      ><input type="radio" name="areaBand" value="500_2000" checked /> 500–2.000
+                      m²</label
+                    >
+                    <label
+                      ><input type="radio" name="areaBand" value="2000_10000" /> 2.000–10.000
+                      m²</label
+                    >
+                    <label
+                      ><input type="radio" name="areaBand" value="over_10000" /> Mais de 10.000
+                      m²</label
+                    >
+                  </div>
+                </div>
+              </fieldset>
+              <fieldset class="briefing-fieldset">
+                <legend>Modelo de contratação desejado</legend>
+                <div class="briefing-options">
+                  <label
+                    ><input type="radio" name="contractModel" value="full_contract" checked />
+                    Empreitada global</label
+                  >
+                  <label
+                    ><input type="radio" name="contractModel" value="construction_management" />
+                    Administração de obra</label
+                  >
+                  <label
+                    ><input type="radio" name="contractModel" value="labor_only" /> Fornecimento de
+                    mão de obra / equipe</label
+                  >
+                  <label
+                    ><input type="radio" name="contractModel" value="tbd" /> A definir com a
+                    SM</label
+                  >
+                </div>
+              </fieldset>
+              <fieldset class="briefing-fieldset">
+                <legend>Prazo-alvo</legend>
+                <div class="briefing-options briefing-options-columns">
+                  <label
+                    ><input type="radio" name="timeline" value="in_progress" /> Já em
+                    andamento</label
+                  >
+                  <label><input type="radio" name="timeline" value="urgent" /> URGENTE</label>
+                  <label><input type="radio" name="timeline" value="short" /> Curto</label>
+                  <label
+                    ><input type="radio" name="timeline" value="medium" checked /> Médio</label
+                  >
+                  <label><input type="radio" name="timeline" value="long" /> Longo</label>
+                </div>
+              </fieldset>
+              <fieldset class="briefing-fieldset">
+                <legend>Situação do local e restrições</legend>
+                <div class="briefing-options">
+                  <label
+                    ><input type="radio" name="siteContext" value="access_ok" checked /> Canteiro
+                    com acesso favorável</label
+                  >
+                  <label
+                    ><input type="radio" name="siteContext" value="neighbor_restriction" />
+                    Restrição de vizinhança</label
+                  >
+                  <label
+                    ><input type="radio" name="siteContext" value="hard_logistics" /> Logística
+                    difícil</label
+                  >
+                  <label
+                    ><input type="radio" name="siteContext" value="night_shifts" /> Interesse em
+                    turnos / noturno</label
+                  >
+                </div>
+              </fieldset>
+              <fieldset class="briefing-fieldset">
+                <legend>Projetos e licitação</legend>
+                <div class="briefing-options">
+                  <label
+                    ><input type="radio" name="projectSupport" value="has_executive" checked />
+                    Cliente já tem projeto executivo</label
+                  >
+                  <label
+                    ><input type="radio" name="projectSupport" value="needs_interfaces" /> Precisa
+                    apoio em interfaces</label
+                  >
+                  <label
+                    ><input type="radio" name="projectSupport" value="bid_in_review" /> Licitação
+                    em análise</label
+                  >
+                </div>
+              </fieldset>
+              <fieldset class="briefing-fieldset">
+                <legend>Dados para contato (opcional)</legend>
+                <div class="briefing-fields-stack">
+                  <label class="briefing-text-label">
+                    Nome
+                    <input type="text" name="contactName" autocomplete="name" />
+                  </label>
+                  <label class="briefing-text-label">
+                    E-mail
+                    <input type="email" name="contactEmail" autocomplete="email" />
+                  </label>
+                  <label class="briefing-text-label">
+                    Telefone
+                    <input type="tel" name="contactPhone" autocomplete="tel" />
+                  </label>
+                  <label class="briefing-text-label">
+                    Observações
+                    <textarea name="notes" rows="3"></textarea>
+                  </label>
+                </div>
+              </fieldset>
+            </form>
+          </div>
         </div>
       </section>
 
