@@ -32,15 +32,30 @@ npm run preview
 
 A pasta `dist/` contém os arquivos estáticos prontos para publicação.
 
-## Deploy (alternativas ao Vercel)
+## Deploy
 
-O plano gratuito do Vercel pode **limitar o número de pessoas que acessam o link de “Preview”** (ou impor outras restrições de equipe). Para o site ir à internet **sem depender desse limite**, use um destes serviços (todos servem a pasta `dist/` após `npm run build`).
+O `vite.config.ts` usa `VITE_BASE_PATH` só no **GitHub Pages** (site em subpath `usuario.github.io/repo/`). Em Vercel, Netlify e Cloudflare o domínio fica na **raiz**; não defina `VITE_BASE_PATH` (o build usa base `/`).
 
-### Netlify (recomendado: simples, site em `*.netlify.app`)
+### Vercel (produção)
+
+O repositório inclui [`vercel.json`](vercel.json) com `npm run build` e saída em `dist/`.
+
+**Produção atual:** [https://sm-empreiteira.vercel.app](https://sm-empreiteira.vercel.app)
+
+1. Na primeira vez: `npx vercel login` e, na pasta do projeto, `npx vercel link` (associa ao time/projeto certo).
+2. Deploy manual de produção:
+
+```bash
+npx vercel deploy --prod --yes
+```
+
+3. Deploy automático: no [dashboard da Vercel](https://vercel.com/dashboard), importe o repositório Git e deixe o build padrão (o `vercel.json` já orienta o output).
+
+### Netlify (alternativa: `*.netlify.app`)
 
 1. Crie conta em [Netlify](https://www.netlify.com/) e conecte o repositório Git.
 2. Build: `npm run build`, diretório de publicação: `dist` (o repositório já inclui `netlify.toml` com isso).
-3. Cada push na branch principal gera deploy automático; o endereço público não fica preso a “um visualizador”.
+3. Cada push na branch principal gera deploy automático.
 
 ### Cloudflare Pages
 
@@ -53,26 +68,15 @@ O plano gratuito do Vercel pode **limitar o número de pessoas que acessam o lin
 2. O workflow `.github/workflows/deploy-github-pages.yml` faz build com `VITE_BASE_PATH` igual ao nome do repositório (URL típica: `https://<usuario>.github.io/<nome-do-repo>/`).
 3. Ajuste a branch no YAML se o deploy não for em `main`.
 
-O `vite.config.ts` lê a variável `VITE_BASE_PATH` só para GitHub Pages em subpath; em Netlify/Cloudflare deixe sem definir (base padrão `/`).
-
-### Vercel (opcional)
-
-O repositório inclui `vercel.json` com `npm run build` e saída em `dist/`.
-
-```bash
-npx vercel deploy --prod --yes
-```
-
-Se o primeiro link falhar por causa do caminho do projeto no Windows (espaços no path), use: `npx vercel deploy --prod --yes --name sm-empreiteira`.
-
-**Exemplo (se ainda estiver ativo):** [https://sm-empreiteira.vercel.app](https://sm-empreiteira.vercel.app)
+**Nota:** o plano gratuito da Vercel pode limitar previews ou recursos de equipe; Netlify e Cloudflare Pages costumam ser alternativas simples para o mesmo tipo de site estático.
 
 ## Estrutura principal
 
 | Caminho | Descrição |
 |--------|-----------|
 | `index.html` | Página única e seções âncora |
-| `src/main.ts` | Menu mobile, render do catálogo, ano no rodapé |
+| `src/main.ts` | Menu mobile, render do catálogo, briefing e ano no rodapé |
+| `src/briefing/` | Formulário de briefing, resumo e painel de leitura rápida |
 | `src/style.css` | Tokens de marca e layout |
 | `src/data/projects.ts` | Dados dos cards do catálogo |
 | `public/logo-sm-empreiteira.svg` | Logo vetorial do header |
